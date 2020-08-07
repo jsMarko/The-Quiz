@@ -25,9 +25,13 @@ for (let i = 0; i < questions.length; i++) {
 
    if (response === answer) {
       correctAnswers++;
-      correct.push(question);
+      correct.push(
+         `${question} <span class="corAns">Your answer was ${answer}, Well done!</span>`
+      );
    } else {
-      incorrect.push(question);
+      incorrect.push(
+         `${question} <span class="incorAns">Your answer: ${response} -   Correct Answer: ${answer}</span> `
+      );
    }
 }
 
@@ -41,10 +45,10 @@ function listItems(arr) {
 
 let html = `
   <h1> You got ${correctAnswers} question(s) right!!! </h1>
-  <h2>You got these questions right!!!</h2>
+  <h2><span class="right">RIGHT</span> Answers:</h2>
   <ol>${listItems(correct)}</ol>
 
-  <h2>You got these questions wrong!!!</h2>
+  <h2><span class="wrong">WRONG</span> Answers:</h2>
   <ol>${listItems(incorrect)}</ol>
 `;
 document.querySelector("main").innerHTML = html;
